@@ -32,4 +32,20 @@ describe('Login Page Tests', function() {
     cy.get('#password').type('123');
     cy.get('[data-cy="text-field-error-text"]').contains('Ihr Portal-Passwort muss zwischen 8 und 64 Zeichen lang sein.').should('be.visible');
   });
+  
+  it('Check password field displays password characters as dots by default', () => {
+    cy.get('#password').should('have.attr', 'type', 'password');
+  });
+  
+  it('Check password field toggles between hiding and showing password', () => {
+    cy.get("#dip-consent-summary button:nth-child(2)").click();
+    cy.get('#password').type('hugo'); 
+    cy.get('[data-cy="text-field-ShowPassword-icon"]').click();
+    cy.get('#password').should('have.attr', 'type', 'text');
+    cy.get('[data-cy="text-field-HidePassword-icon"]').click();
+    cy.get('#password').should('have.attr', 'type', 'password');
+    Cypress.on('uncaught:exception', (err, runnable) => {
+      return false
+    });
+  });
 });
