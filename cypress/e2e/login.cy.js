@@ -49,6 +49,10 @@ describe('Login Page Tests', function() {
     });
   });
 
+  it('Checks section headline text', () => {
+    cy.get('[data-cy="section-headline"]').should('contain', 'Informieren Sie sich über unsere weiteren Services');
+  });
+  
   it('Check expandable fields under the login section', () => {
     const columnCounter = 8;
     cy.get("#dip-consent-summary button:nth-child(2)").click();
