@@ -26,14 +26,16 @@ describe('Login Page Tests Chrome', function() {
   });
 
   
-  it('Check error message for short username', function() {
+  it('Check error message for short username and error icon', function() {
     cy.get('#username').type('x');
     cy.get('[data-cy="text-field-error-text"]').contains('Ihr Benutzername muss zwischen 2 und 64 Zeichen lang sein.').should('be.visible');
+    cy.get('[data-cy="text-field-error-icon"]').should('be.visible');
   });
 
-  it('Check error message for short password', function() {
+  it('Check error message for short password and error icon', function() {
     cy.get('#password').type('123');
     cy.get('[data-cy="text-field-error-text"]').contains('Ihr Portal-Passwort muss zwischen 8 und 64 Zeichen lang sein.').should('be.visible');
+    cy.get('[data-cy="text-field-error-icon"]').should('be.visible');
   });
   
   it('Check password field displays password characters as dots by default', () => {
@@ -102,14 +104,16 @@ describe('Login Page Tests Edge', () => {
       cy.get('[data-cy="text-field-ShowPassword-icon"]').should('be.visible');
   });
 
-  it('Check error message for short username', function() {
+  it('Check error message for short username and error icon', function() {
     cy.get('#username').type('x');
     cy.get('[data-cy="text-field-error-text"]').contains('Ihr Benutzername muss zwischen 2 und 64 Zeichen lang sein.').should('be.visible');
+    cy.get('[data-cy="text-field-error-icon"]').should('be.visible');
   });
 
-  it('Check error message for short password', function() {
+  it('Check error message for short password and error icon', function() {
     cy.get('#password').type('123');
     cy.get('[data-cy="text-field-error-text"]').contains('Ihr Portal-Passwort muss zwischen 8 und 64 Zeichen lang sein.').should('be.visible');
+    cy.get('[data-cy="text-field-error-icon"]').should('be.visible');
   });
   
   it('Check password field displays password characters as dots by default', () => {
