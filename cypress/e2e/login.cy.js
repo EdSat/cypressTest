@@ -48,14 +48,20 @@ describe('Login Page Tests', function() {
       return false
     });
   });
-  
+
   it('Check expandable fields under the login section', () => {
     const columnCounter = 8;
     cy.get("#dip-consent-summary button:nth-child(2)").click();
     for (let i = 0; i < columnCounter; i++) {
-      cy.get('[data-cy="accordion-container"]').find('[data-cy="accordion-item"]').eq(i).should('be.visible');
-      cy.get('[data-cy="accordion-container"]').find('[data-cy="accordion-item"]').eq(i).click();
-      cy.get('[data-cy="accordion-container"]').find('[data-cy="accordion-item-text visible"]').eq(i).should('be.visible');
+      cy.get('[data-cy="accordion-container"]').find('[data-cy="headline-icon"]').eq(i).should('be.visible');
+      cy.get('[data-cy="accordion-container"]').find('[data-cy="headline-icon"]').eq(i).click();
+      cy.get('[data-cy="accordion-container"]').find('[data-cy="accordion-item-icon open"]').eq(i).should('be.visible');
+    };
+    for (let j = 0; j < columnCounter; j++) {
+      cy.get('[data-cy="accordion-container"]').find('[data-cy="headline-icon"]').eq(j).should('be.visible');
+      cy.get('[data-cy="accordion-container"]').find('[data-cy="headline-icon"]').eq(j).click();
+      cy.get('[data-cy="accordion-container"]').find('[data-cy="accordion-item-icon closed"]').eq(j).should('be.visible');
+
     };
     Cypress.on('uncaught:exception', (err, runnable) => {
       return false
